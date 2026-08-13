@@ -41,7 +41,6 @@ export default function ContactForm({
   product?: QuoteProduct | undefined;
 }) {
   const send = useServerFn(submitLead);
-  const { provider, rules, addLogEntry } = useAdminStore();
   const [form, setForm] = useState(empty);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
