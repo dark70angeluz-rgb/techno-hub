@@ -6,7 +6,7 @@ A premium, professionally-designed technology gadget membership platform built w
 
 SparkleShop Nexus is a next-generation e-commerce platform designed for the tech-savvy consumer who demands premium design quality. This isn't a template-based site—it's a handcrafted platform that feels sophisticated, intentional, and production-ready.
 
-**Live Demo**: [refined-gadget-hub.lovable.app](https://refined-gadget-hub.lovable.app)
+**Live Demo**:
 
 ## ✨ Key Features
 
