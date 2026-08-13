@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AdminStoreProvider } from "../lib/admin-store";
+import { Toaster } from "../components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -77,23 +79,40 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "TechHub — Gadgets From The Brands Professionals Trust" },
+      {
+        name: "description",
+        content:
+          "Browse a curated catalogue of smartphones, laptops, audio, wearables and imaging gear from leading brands. Request a quote on any product — no account, no checkout.",
+      },
+      { property: "og:title", content: "TechHub — Gadgets From The Brands Professionals Trust" },
+      {
+        property: "og:description",
+        content: "Browse a curated catalogue of smartphones, laptops, audio, wearables and imaging gear from leading brands. Request a quote on any product — no account, no checkout.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "TechHub — Gadgets From The Brands Professionals Trust" },
+      { name: "twitter:description", content: "Browse a curated catalogue of smartphones, laptops, audio, wearables and imaging gear from leading brands. Request a quote on any product — no account, no checkout." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/281cf8cf982867a00121f438d3ab4e43/id-preview-fd4a1c1b--b9a50e31-4ecc-428a-ac78-08f56d726b44.lovable.app-1786628401239.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/281cf8cf982867a00121f438d3ab4e43/id-preview-fd4a1c1b--b9a50e31-4ecc-428a-ac78-08f56d726b44.lovable.app-1786628401239.png" },
     ],
     links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700;800&display=swap",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
@@ -119,8 +138,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <AdminStoreProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+        <Toaster position="top-right" richColors />
+      </AdminStoreProvider>
     </QueryClientProvider>
   );
 }
