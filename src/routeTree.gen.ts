@@ -15,6 +15,7 @@ import { Route as BenefitsRouteImport } from './routes/benefits'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as AdminSplatRouteImport } from './routes/admin.$'
 import { Route as EventsIndexRouteImport } from './routes/events/index'
 import { Route as EventsSlugRouteImport } from './routes/events/$slug'
 import { Route as MembershipIndexRouteImport } from './routes/membership.index'
@@ -50,6 +51,11 @@ const GetStartedRoute = GetStartedRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSplatRoute = AdminSplatRouteImport.update({
+  id: '/admin/$',
+  path: '/admin/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EventsIndexRoute = EventsIndexRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/get-started': typeof GetStartedRoute
   '/login': typeof LoginRoute
+  '/admin/$': typeof AdminSplatRoute
   '/events/$slug': typeof EventsSlugRoute
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/get-started': typeof GetStartedRoute
   '/login': typeof LoginRoute
+  '/admin/$': typeof AdminSplatRoute
   '/events/$slug': typeof EventsSlugRoute
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/get-started': typeof GetStartedRoute
   '/login': typeof LoginRoute
+  '/admin/$': typeof AdminSplatRoute
   '/events/$slug': typeof EventsSlugRoute
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/get-started'
     | '/login'
+    | '/admin/$'
     | '/events/$slug'
     | '/membership/apply'
     | '/membership/status'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/get-started'
     | '/login'
+    | '/admin/$'
     | '/events/$slug'
     | '/membership/apply'
     | '/membership/status'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/get-started'
     | '/login'
+    | '/admin/$'
     | '/events/$slug'
     | '/membership/apply'
     | '/membership/status'
@@ -178,6 +190,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   GetStartedRoute: typeof GetStartedRoute
   LoginRoute: typeof LoginRoute
+  AdminSplatRoute: typeof AdminSplatRoute
   EventsSlugRoute: typeof EventsSlugRoute
   MembershipApplyRoute: typeof MembershipApplyRoute
   MembershipStatusRoute: typeof MembershipStatusRoute
@@ -228,6 +241,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/$': {
+      id: '/admin/$'
+      path: '/admin/$'
+      fullPath: '/admin/$'
+      preLoaderRoute: typeof AdminSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/events/': {
@@ -282,6 +302,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   GetStartedRoute: GetStartedRoute,
   LoginRoute: LoginRoute,
+  AdminSplatRoute: AdminSplatRoute,
   EventsSlugRoute: EventsSlugRoute,
   MembershipApplyRoute: MembershipApplyRoute,
   MembershipStatusRoute: MembershipStatusRoute,
