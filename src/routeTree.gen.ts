@@ -10,33 +10,287 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
+import { Route as BenefitsRouteImport } from './routes/benefits'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GetStartedRouteImport } from './routes/get-started'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminBenefitsRouteImport } from './routes/admin/benefits'
+import { Route as AdminEventsRouteImport } from './routes/admin/events'
+import { Route as AdminLeadsRouteImport } from './routes/admin/leads'
+import { Route as AdminMembershipRouteImport } from './routes/admin/membership'
+import { Route as AdminNotificationsRouteImport } from './routes/admin/notifications'
+import { Route as AdminProductsRouteImport } from './routes/admin/products'
+import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as EventsIndexRouteImport } from './routes/events/index'
+import { Route as EventsSlugRouteImport } from './routes/events/$slug'
+import { Route as MembershipIndexRouteImport } from './routes/membership.index'
+import { Route as MembershipApplyRouteImport } from './routes/membership.apply'
+import { Route as MembershipStatusRouteImport } from './routes/membership.status'
+import { Route as ProductsSlugRouteImport } from './routes/products/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BenefitsRoute = BenefitsRouteImport.update({
+  id: '/benefits',
+  path: '/benefits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetStartedRoute = GetStartedRouteImport.update({
+  id: '/get-started',
+  path: '/get-started',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminBenefitsRoute = AdminBenefitsRouteImport.update({
+  id: '/benefits',
+  path: '/benefits',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminEventsRoute = AdminEventsRouteImport.update({
+  id: '/events',
+  path: '/events',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminLeadsRoute = AdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminMembershipRoute = AdminMembershipRouteImport.update({
+  id: '/membership',
+  path: '/membership',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminProductsRoute = AdminProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const EventsIndexRoute = EventsIndexRouteImport.update({
+  id: '/events/',
+  path: '/events/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EventsSlugRoute = EventsSlugRouteImport.update({
+  id: '/events/$slug',
+  path: '/events/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipIndexRoute = MembershipIndexRouteImport.update({
+  id: '/membership/',
+  path: '/membership/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipApplyRoute = MembershipApplyRouteImport.update({
+  id: '/membership/apply',
+  path: '/membership/apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MembershipStatusRoute = MembershipStatusRouteImport.update({
+  id: '/membership/status',
+  path: '/membership/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProductsSlugRoute = ProductsSlugRouteImport.update({
+  id: '/products/$slug',
+  path: '/products/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
+  '/about': typeof AboutRoute
+  '/benefits': typeof BenefitsRoute
+  '/contact': typeof ContactRoute
+  '/get-started': typeof GetStartedRoute
+  '/login': typeof LoginRoute
+  '/admin/benefits': typeof AdminBenefitsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/leads': typeof AdminLeadsRoute
+  '/admin/membership': typeof AdminMembershipRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/products': typeof AdminProductsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/membership/apply': typeof MembershipApplyRoute
+  '/membership/status': typeof MembershipStatusRoute
+  '/products/$slug': typeof ProductsSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/events/': typeof EventsIndexRoute
+  '/membership/': typeof MembershipIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/benefits': typeof BenefitsRoute
+  '/contact': typeof ContactRoute
+  '/get-started': typeof GetStartedRoute
+  '/login': typeof LoginRoute
+  '/admin/benefits': typeof AdminBenefitsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/leads': typeof AdminLeadsRoute
+  '/admin/membership': typeof AdminMembershipRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/products': typeof AdminProductsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/membership/apply': typeof MembershipApplyRoute
+  '/membership/status': typeof MembershipStatusRoute
+  '/products/$slug': typeof ProductsSlugRoute
+  '/admin': typeof AdminIndexRoute
+  '/events': typeof EventsIndexRoute
+  '/membership': typeof MembershipIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
+  '/about': typeof AboutRoute
+  '/benefits': typeof BenefitsRoute
+  '/contact': typeof ContactRoute
+  '/get-started': typeof GetStartedRoute
+  '/login': typeof LoginRoute
+  '/admin/benefits': typeof AdminBenefitsRoute
+  '/admin/events': typeof AdminEventsRoute
+  '/admin/leads': typeof AdminLeadsRoute
+  '/admin/membership': typeof AdminMembershipRoute
+  '/admin/notifications': typeof AdminNotificationsRoute
+  '/admin/products': typeof AdminProductsRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/events/$slug': typeof EventsSlugRoute
+  '/membership/apply': typeof MembershipApplyRoute
+  '/membership/status': typeof MembershipStatusRoute
+  '/products/$slug': typeof ProductsSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/events/': typeof EventsIndexRoute
+  '/membership/': typeof MembershipIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/about'
+    | '/benefits'
+    | '/contact'
+    | '/get-started'
+    | '/login'
+    | '/admin/benefits'
+    | '/admin/events'
+    | '/admin/leads'
+    | '/admin/membership'
+    | '/admin/notifications'
+    | '/admin/products'
+    | '/admin/settings'
+    | '/events/$slug'
+    | '/membership/apply'
+    | '/membership/status'
+    | '/products/$slug'
+    | '/admin/'
+    | '/events/'
+    | '/membership/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/benefits'
+    | '/contact'
+    | '/get-started'
+    | '/login'
+    | '/admin/benefits'
+    | '/admin/events'
+    | '/admin/leads'
+    | '/admin/membership'
+    | '/admin/notifications'
+    | '/admin/products'
+    | '/admin/settings'
+    | '/events/$slug'
+    | '/membership/apply'
+    | '/membership/status'
+    | '/products/$slug'
+    | '/admin'
+    | '/events'
+    | '/membership'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/about'
+    | '/benefits'
+    | '/contact'
+    | '/get-started'
+    | '/login'
+    | '/admin/benefits'
+    | '/admin/events'
+    | '/admin/leads'
+    | '/admin/membership'
+    | '/admin/notifications'
+    | '/admin/products'
+    | '/admin/settings'
+    | '/events/$slug'
+    | '/membership/apply'
+    | '/membership/status'
+    | '/products/$slug'
+    | '/admin/'
+    | '/events/'
+    | '/membership/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
+  BenefitsRoute: typeof BenefitsRoute
+  ContactRoute: typeof ContactRoute
+  GetStartedRoute: typeof GetStartedRoute
+  LoginRoute: typeof LoginRoute
+  EventsSlugRoute: typeof EventsSlugRoute
+  MembershipApplyRoute: typeof MembershipApplyRoute
+  MembershipStatusRoute: typeof MembershipStatusRoute
+  ProductsSlugRoute: typeof ProductsSlugRoute
+  EventsIndexRoute: typeof EventsIndexRoute
+  MembershipIndexRoute: typeof MembershipIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +302,189 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/benefits': {
+      id: '/benefits'
+      path: '/benefits'
+      fullPath: '/benefits'
+      preLoaderRoute: typeof BenefitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-started': {
+      id: '/get-started'
+      path: '/get-started'
+      fullPath: '/get-started'
+      preLoaderRoute: typeof GetStartedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/benefits': {
+      id: '/admin/benefits'
+      path: '/benefits'
+      fullPath: '/admin/benefits'
+      preLoaderRoute: typeof AdminBenefitsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/events': {
+      id: '/admin/events'
+      path: '/events'
+      fullPath: '/admin/events'
+      preLoaderRoute: typeof AdminEventsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/leads': {
+      id: '/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/membership': {
+      id: '/admin/membership'
+      path: '/membership'
+      fullPath: '/admin/membership'
+      preLoaderRoute: typeof AdminMembershipRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/products': {
+      id: '/admin/products'
+      path: '/products'
+      fullPath: '/admin/products'
+      preLoaderRoute: typeof AdminProductsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/events/': {
+      id: '/events/'
+      path: '/events'
+      fullPath: '/events/'
+      preLoaderRoute: typeof EventsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/events/$slug': {
+      id: '/events/$slug'
+      path: '/events/$slug'
+      fullPath: '/events/$slug'
+      preLoaderRoute: typeof EventsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership/': {
+      id: '/membership/'
+      path: '/membership'
+      fullPath: '/membership/'
+      preLoaderRoute: typeof MembershipIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership/apply': {
+      id: '/membership/apply'
+      path: '/membership/apply'
+      fullPath: '/membership/apply'
+      preLoaderRoute: typeof MembershipApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/membership/status': {
+      id: '/membership/status'
+      path: '/membership/status'
+      fullPath: '/membership/status'
+      preLoaderRoute: typeof MembershipStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/products/$slug': {
+      id: '/products/$slug'
+      path: '/products/$slug'
+      fullPath: '/products/$slug'
+      preLoaderRoute: typeof ProductsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AdminRouteRouteChildren {
+  AdminBenefitsRoute: typeof AdminBenefitsRoute
+  AdminEventsRoute: typeof AdminEventsRoute
+  AdminLeadsRoute: typeof AdminLeadsRoute
+  AdminMembershipRoute: typeof AdminMembershipRoute
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
+  AdminProductsRoute: typeof AdminProductsRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminBenefitsRoute: AdminBenefitsRoute,
+  AdminEventsRoute: AdminEventsRoute,
+  AdminLeadsRoute: AdminLeadsRoute,
+  AdminMembershipRoute: AdminMembershipRoute,
+  AdminNotificationsRoute: AdminNotificationsRoute,
+  AdminProductsRoute: AdminProductsRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
+  BenefitsRoute: BenefitsRoute,
+  ContactRoute: ContactRoute,
+  GetStartedRoute: GetStartedRoute,
+  LoginRoute: LoginRoute,
+  EventsSlugRoute: EventsSlugRoute,
+  MembershipApplyRoute: MembershipApplyRoute,
+  MembershipStatusRoute: MembershipStatusRoute,
+  ProductsSlugRoute: ProductsSlugRoute,
+  EventsIndexRoute: EventsIndexRoute,
+  MembershipIndexRoute: MembershipIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
