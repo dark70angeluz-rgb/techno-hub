@@ -4,7 +4,7 @@ import Icon from "@/components/kit/Icon";
 import { ButtonLink } from "@/components/kit/Button";
 import { Card, Reveal } from "@/components/kit";
 import { getEvent } from "@/data/events";
-import { usePublicEvents } from "@/lib/admin-store";
+import { usePublicEvents } from "@/lib/content-store";
 
 export const Route = createFileRoute("/events/$slug")({
   loader: ({ params }) => ({ event: getEvent(params.slug) ?? null, slug: params.slug }),

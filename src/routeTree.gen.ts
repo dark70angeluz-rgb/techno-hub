@@ -11,19 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as BenefitsRouteImport } from './routes/benefits'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as AdminIndexRouteImport } from './routes/admin/index'
-import { Route as AdminBenefitsRouteImport } from './routes/admin/benefits'
-import { Route as AdminEventsRouteImport } from './routes/admin/events'
-import { Route as AdminLeadsRouteImport } from './routes/admin/leads'
-import { Route as AdminMembershipRouteImport } from './routes/admin/membership'
-import { Route as AdminNotificationsRouteImport } from './routes/admin/notifications'
-import { Route as AdminProductsRouteImport } from './routes/admin/products'
-import { Route as AdminSettingsRouteImport } from './routes/admin/settings'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminSplatRouteImport } from './routes/admin.$'
 import { Route as EventsIndexRouteImport } from './routes/events/index'
 import { Route as EventsSlugRouteImport } from './routes/events/$slug'
 import { Route as MembershipIndexRouteImport } from './routes/membership.index'
@@ -39,11 +32,6 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRouteRoute = AdminRouteRouteImport.update({
-  id: '/admin',
-  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BenefitsRoute = BenefitsRouteImport.update({
@@ -67,44 +55,14 @@ const LoginRoute = LoginRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdminRouteRoute,
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AdminBenefitsRoute = AdminBenefitsRouteImport.update({
-  id: '/benefits',
-  path: '/benefits',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-const AdminEventsRoute = AdminEventsRouteImport.update({
-  id: '/events',
-  path: '/events',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-const AdminLeadsRoute = AdminLeadsRouteImport.update({
-  id: '/leads',
-  path: '/leads',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-const AdminMembershipRoute = AdminMembershipRouteImport.update({
-  id: '/membership',
-  path: '/membership',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-const AdminProductsRoute = AdminProductsRouteImport.update({
-  id: '/products',
-  path: '/products',
-  getParentRoute: () => AdminRouteRoute,
-} as any)
-const AdminSettingsRoute = AdminSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => AdminRouteRoute,
+const AdminSplatRoute = AdminSplatRouteImport.update({
+  id: '/admin/$',
+  path: '/admin/$',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const EventsIndexRoute = EventsIndexRouteImport.update({
   id: '/events/',
@@ -139,19 +97,12 @@ const ProductsSlugRoute = ProductsSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/benefits': typeof BenefitsRoute
   '/contact': typeof ContactRoute
   '/get-started': typeof GetStartedRoute
   '/login': typeof LoginRoute
-  '/admin/benefits': typeof AdminBenefitsRoute
-  '/admin/events': typeof AdminEventsRoute
-  '/admin/leads': typeof AdminLeadsRoute
-  '/admin/membership': typeof AdminMembershipRoute
-  '/admin/notifications': typeof AdminNotificationsRoute
-  '/admin/products': typeof AdminProductsRoute
-  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/$': typeof AdminSplatRoute
   '/events/$slug': typeof EventsSlugRoute
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
@@ -167,13 +118,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/get-started': typeof GetStartedRoute
   '/login': typeof LoginRoute
-  '/admin/benefits': typeof AdminBenefitsRoute
-  '/admin/events': typeof AdminEventsRoute
-  '/admin/leads': typeof AdminLeadsRoute
-  '/admin/membership': typeof AdminMembershipRoute
-  '/admin/notifications': typeof AdminNotificationsRoute
-  '/admin/products': typeof AdminProductsRoute
-  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/$': typeof AdminSplatRoute
   '/events/$slug': typeof EventsSlugRoute
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
@@ -185,19 +130,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRouteRouteWithChildren
   '/about': typeof AboutRoute
   '/benefits': typeof BenefitsRoute
   '/contact': typeof ContactRoute
   '/get-started': typeof GetStartedRoute
   '/login': typeof LoginRoute
-  '/admin/benefits': typeof AdminBenefitsRoute
-  '/admin/events': typeof AdminEventsRoute
-  '/admin/leads': typeof AdminLeadsRoute
-  '/admin/membership': typeof AdminMembershipRoute
-  '/admin/notifications': typeof AdminNotificationsRoute
-  '/admin/products': typeof AdminProductsRoute
-  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/$': typeof AdminSplatRoute
   '/events/$slug': typeof EventsSlugRoute
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
@@ -210,19 +148,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/admin'
     | '/about'
     | '/benefits'
     | '/contact'
     | '/get-started'
     | '/login'
-    | '/admin/benefits'
-    | '/admin/events'
-    | '/admin/leads'
-    | '/admin/membership'
-    | '/admin/notifications'
-    | '/admin/products'
-    | '/admin/settings'
+    | '/admin/$'
     | '/events/$slug'
     | '/membership/apply'
     | '/membership/status'
@@ -238,13 +169,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/get-started'
     | '/login'
-    | '/admin/benefits'
-    | '/admin/events'
-    | '/admin/leads'
-    | '/admin/membership'
-    | '/admin/notifications'
-    | '/admin/products'
-    | '/admin/settings'
+    | '/admin/$'
     | '/events/$slug'
     | '/membership/apply'
     | '/membership/status'
@@ -255,19 +180,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/admin'
     | '/about'
     | '/benefits'
     | '/contact'
     | '/get-started'
     | '/login'
-    | '/admin/benefits'
-    | '/admin/events'
-    | '/admin/leads'
-    | '/admin/membership'
-    | '/admin/notifications'
-    | '/admin/products'
-    | '/admin/settings'
+    | '/admin/$'
     | '/events/$slug'
     | '/membership/apply'
     | '/membership/status'
@@ -279,16 +197,17 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRouteRoute: typeof AdminRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
   BenefitsRoute: typeof BenefitsRoute
   ContactRoute: typeof ContactRoute
   GetStartedRoute: typeof GetStartedRoute
   LoginRoute: typeof LoginRoute
+  AdminSplatRoute: typeof AdminSplatRoute
   EventsSlugRoute: typeof EventsSlugRoute
   MembershipApplyRoute: typeof MembershipApplyRoute
   MembershipStatusRoute: typeof MembershipStatusRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
+  AdminIndexRoute: typeof AdminIndexRoute
   EventsIndexRoute: typeof EventsIndexRoute
   MembershipIndexRoute: typeof MembershipIndexRoute
 }
@@ -307,13 +226,6 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/benefits': {
@@ -346,59 +258,17 @@ declare module '@tanstack/react-router' {
     }
     '/admin/': {
       id: '/admin/'
-      path: '/'
+      path: '/admin'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof AdminRouteRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/admin/benefits': {
-      id: '/admin/benefits'
-      path: '/benefits'
-      fullPath: '/admin/benefits'
-      preLoaderRoute: typeof AdminBenefitsRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
-    '/admin/events': {
-      id: '/admin/events'
-      path: '/events'
-      fullPath: '/admin/events'
-      preLoaderRoute: typeof AdminEventsRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
-    '/admin/leads': {
-      id: '/admin/leads'
-      path: '/leads'
-      fullPath: '/admin/leads'
-      preLoaderRoute: typeof AdminLeadsRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
-    '/admin/membership': {
-      id: '/admin/membership'
-      path: '/membership'
-      fullPath: '/admin/membership'
-      preLoaderRoute: typeof AdminMembershipRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
-    '/admin/notifications': {
-      id: '/admin/notifications'
-      path: '/notifications'
-      fullPath: '/admin/notifications'
-      preLoaderRoute: typeof AdminNotificationsRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
-    '/admin/products': {
-      id: '/admin/products'
-      path: '/products'
-      fullPath: '/admin/products'
-      preLoaderRoute: typeof AdminProductsRouteImport
-      parentRoute: typeof AdminRouteRoute
-    }
-    '/admin/settings': {
-      id: '/admin/settings'
-      path: '/settings'
-      fullPath: '/admin/settings'
-      preLoaderRoute: typeof AdminSettingsRouteImport
-      parentRoute: typeof AdminRouteRoute
+    '/admin/$': {
+      id: '/admin/$'
+      path: '/admin/$'
+      fullPath: '/admin/$'
+      preLoaderRoute: typeof AdminSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/events/': {
       id: '/events/'
@@ -445,44 +315,19 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AdminRouteRouteChildren {
-  AdminBenefitsRoute: typeof AdminBenefitsRoute
-  AdminEventsRoute: typeof AdminEventsRoute
-  AdminLeadsRoute: typeof AdminLeadsRoute
-  AdminMembershipRoute: typeof AdminMembershipRoute
-  AdminNotificationsRoute: typeof AdminNotificationsRoute
-  AdminProductsRoute: typeof AdminProductsRoute
-  AdminSettingsRoute: typeof AdminSettingsRoute
-  AdminIndexRoute: typeof AdminIndexRoute
-}
-
-const AdminRouteRouteChildren: AdminRouteRouteChildren = {
-  AdminBenefitsRoute: AdminBenefitsRoute,
-  AdminEventsRoute: AdminEventsRoute,
-  AdminLeadsRoute: AdminLeadsRoute,
-  AdminMembershipRoute: AdminMembershipRoute,
-  AdminNotificationsRoute: AdminNotificationsRoute,
-  AdminProductsRoute: AdminProductsRoute,
-  AdminSettingsRoute: AdminSettingsRoute,
-  AdminIndexRoute: AdminIndexRoute,
-}
-
-const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
-  AdminRouteRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRouteRoute: AdminRouteRouteWithChildren,
   AboutRoute: AboutRoute,
   BenefitsRoute: BenefitsRoute,
   ContactRoute: ContactRoute,
   GetStartedRoute: GetStartedRoute,
   LoginRoute: LoginRoute,
+  AdminSplatRoute: AdminSplatRoute,
   EventsSlugRoute: EventsSlugRoute,
   MembershipApplyRoute: MembershipApplyRoute,
   MembershipStatusRoute: MembershipStatusRoute,
   ProductsSlugRoute: ProductsSlugRoute,
+  AdminIndexRoute: AdminIndexRoute,
   EventsIndexRoute: EventsIndexRoute,
   MembershipIndexRoute: MembershipIndexRoute,
 }

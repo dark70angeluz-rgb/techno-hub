@@ -69,13 +69,6 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <Link
-            to="/admin"
-            className="flex h-11 items-center gap-1.5 rounded-[12px] px-3 text-[14px] font-medium text-muted transition-colors hover:text-navy"
-            aria-label="Admin portal"
-          >
-            <Icon name="admin_panel_settings" size={18} />
-          </Link>
-          <Link
             to="/login"
             className={`flex h-11 items-center gap-1.5 rounded-[12px] px-3.5 text-[14.5px] font-semibold transition-colors ${
               active("/login") ? "text-navy" : "text-muted hover:text-navy"
@@ -132,12 +125,6 @@ export default function Navbar() {
                   <Button fullWidth icon="arrow_forward">
                     Get Started
                   </Button>
-                </Link>
-                <Link
-                  to="/admin"
-                  className="flex min-h-[44px] items-center gap-2 px-4 text-[15px] font-medium text-muted"
-                >
-                  <Icon name="admin_panel_settings" size={18} /> Admin Portal
                 </Link>
               </div>
             </div>

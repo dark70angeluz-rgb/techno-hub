@@ -5,7 +5,7 @@ import Icon from "@/components/kit/Icon";
 import { Card, Eyebrow, Reveal, SectionHeading, StatusChip } from "@/components/kit";
 import ContactForm from "@/components/ContactForm";
 import SiteShell from "@/components/layout/SiteShell";
-import { usePublicProducts } from "@/lib/admin-store";
+import { usePublicProducts } from "@/lib/content-store";
 
 export const Route = createFileRoute("/contact")({
   // "Get a Quote" links arrive as /contact?product=<slug>.

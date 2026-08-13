@@ -11,7 +11,9 @@ import {
   type LeadInput,
 } from "@/lib/leads";
 import { submitLead } from "@/lib/leads.functions";
-import { useAdminStore } from "@/lib/admin-store";
+
+/** Inbox that receives contact + quote inquiries. */
+const NOTIFY_EMAIL = "inquiries@techhub.io";
 
 type Status = "idle" | "loading" | "success" | "error";
 type Errors = Partial<Record<keyof LeadInput, string>>;
@@ -39,7 +41,6 @@ export default function ContactForm({
   product?: QuoteProduct | undefined;
 }) {
   const send = useServerFn(submitLead);
-  const { provider, rules, addLogEntry } = useAdminStore();
   const [form, setForm] = useState(empty);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<Status>("idle");
@@ -82,19 +83,7 @@ export default function ContactForm({
     setErrors({});
     setStatus("loading");
     try {
-      const rule = rules.find((r) => r.id === "contact");
-      const recipient = rule?.recipients || provider.adminEmail;
-      const result = await send({
-        data: { ...parsed.data, ...(rule?.on !== false ? { notifyEmail: recipient } : {}) },
-      });
-      if (rule?.on !== false) {
-        addLogEntry({
-          to: recipient,
-          subject: `New inquiry from ${parsed.data.name} — ${parsed.data.subject}`,
-          type: "Contact form",
-          status: result?.notification?.delivered ? "Delivered" : "Queued",
-        });
-      }
+      await send({ data: { ...parsed.data, notifyEmail: NOTIFY_EMAIL } });
       setForm(empty);
       setStatus("success");
     } catch {
