@@ -6,7 +6,7 @@ import { ButtonLink } from "@/components/kit/Button";
 import { Card, Eyebrow, Reveal, SectionHeading } from "@/components/kit";
 import ProductCard from "@/components/products/ProductCard";
 import ContactForm from "@/components/ContactForm";
-import { usePublicEvents, usePublicProducts } from "@/lib/admin-store";
+import { usePublicEvents, usePublicProducts } from "@/lib/content-store";
 import heroDevices from "@/assets/hero-devices.jpg";
 
 export const Route = createFileRoute("/")({

@@ -3,7 +3,7 @@ import SiteShell from "@/components/layout/SiteShell";
 import Icon from "@/components/kit/Icon";
 import { ButtonLink } from "@/components/kit/Button";
 import { Eyebrow, Reveal, SectionHeading } from "@/components/kit";
-import { usePublicEvents } from "@/lib/admin-store";
+import { usePublicEvents } from "@/lib/content-store";
 
 export const Route = createFileRoute("/events/")({
   component: EventsPage,

@@ -11,7 +11,7 @@ import {
   type LeadInput,
 } from "@/lib/leads";
 import { submitLead } from "@/lib/leads.functions";
-import { useAdminStore } from "@/lib/admin-store";
+import { useAdminStore } from "@/lib/content-store";
 
 type Status = "idle" | "loading" | "success" | "error";
 type Errors = Partial<Record<keyof LeadInput, string>>;

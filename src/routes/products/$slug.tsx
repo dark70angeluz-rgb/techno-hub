@@ -5,7 +5,7 @@ import Icon from "@/components/kit/Icon";
 import { ButtonLink } from "@/components/kit/Button";
 import { Card, Eyebrow, Reveal, StatusChip } from "@/components/kit";
 import { products, type Product } from "@/data/products";
-import { usePublicProducts } from "@/lib/admin-store";
+import { usePublicProducts } from "@/lib/content-store";
 
 
 export const Route = createFileRoute("/products/$slug")({
