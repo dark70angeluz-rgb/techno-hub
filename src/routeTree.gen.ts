@@ -15,6 +15,7 @@ import { Route as BenefitsRouteImport } from './routes/benefits'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GetStartedRouteImport } from './routes/get-started'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminSplatRouteImport } from './routes/admin.$'
 import { Route as EventsIndexRouteImport } from './routes/events/index'
 import { Route as EventsSlugRouteImport } from './routes/events/$slug'
@@ -51,6 +52,11 @@ const GetStartedRoute = GetStartedRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminSplatRoute = AdminSplatRouteImport.update({
@@ -101,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/events/': typeof EventsIndexRoute
   '/membership/': typeof MembershipIndexRoute
 }
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/admin': typeof AdminIndexRoute
   '/events': typeof EventsIndexRoute
   '/membership': typeof MembershipIndexRoute
 }
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/membership/apply': typeof MembershipApplyRoute
   '/membership/status': typeof MembershipStatusRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/admin/': typeof AdminIndexRoute
   '/events/': typeof EventsIndexRoute
   '/membership/': typeof MembershipIndexRoute
 }
@@ -149,6 +158,7 @@ export interface FileRouteTypes {
     | '/membership/apply'
     | '/membership/status'
     | '/products/$slug'
+    | '/admin/'
     | '/events/'
     | '/membership/'
   fileRoutesByTo: FileRoutesByTo
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
     | '/membership/apply'
     | '/membership/status'
     | '/products/$slug'
+    | '/admin'
     | '/events'
     | '/membership'
   id:
@@ -179,6 +190,7 @@ export interface FileRouteTypes {
     | '/membership/apply'
     | '/membership/status'
     | '/products/$slug'
+    | '/admin/'
     | '/events/'
     | '/membership/'
   fileRoutesById: FileRoutesById
@@ -195,6 +207,7 @@ export interface RootRouteChildren {
   MembershipApplyRoute: typeof MembershipApplyRoute
   MembershipStatusRoute: typeof MembershipStatusRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
+  AdminIndexRoute: typeof AdminIndexRoute
   EventsIndexRoute: typeof EventsIndexRoute
   MembershipIndexRoute: typeof MembershipIndexRoute
 }
@@ -241,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/$': {
@@ -307,6 +327,7 @@ const rootRouteChildren: RootRouteChildren = {
   MembershipApplyRoute: MembershipApplyRoute,
   MembershipStatusRoute: MembershipStatusRoute,
   ProductsSlugRoute: ProductsSlugRoute,
+  AdminIndexRoute: AdminIndexRoute,
   EventsIndexRoute: EventsIndexRoute,
   MembershipIndexRoute: MembershipIndexRoute,
 }
